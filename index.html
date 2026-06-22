@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Salud Texas Clinic × Intellabooks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gray:#FFF8F5;
+    --white:#FFFFFF;
+    --ink:#013356;
+    --muted:#5b6b78;
+    --navy:#013356;
+    --navy-deep:#011F35;
+    --gold:#D4AF37;
+    --blue:#0071E3;
+    --cyan:#00D9FF;
+    --pink:#FF85A2;
+    --orchid:#C3A5EC;
+    --shadow:0 20px 55px -26px rgba(1,51,86,0.30);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;scroll-snap-type:y mandatory;}
+  body{font-family:'DM Sans',-apple-system,sans-serif;color:var(--ink);background:var(--gray);-webkit-font-smoothing:antialiased;line-height:1.55;}
+  section{min-height:100vh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:6rem 1.5rem;position:relative;}
+  .inner{max-width:920px;width:100%;}
+  .eyebrow{font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--blue);margin-bottom:1.1rem;font-weight:700;}
+  h1{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(2.7rem,6.5vw,4.7rem);line-height:1.03;letter-spacing:-0.01em;color:var(--navy);}
+  h2{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(2rem,4.6vw,3.3rem);line-height:1.08;margin-bottom:1rem;color:var(--navy);}
+  .lead{font-size:clamp(1.08rem,2vw,1.35rem);color:var(--muted);max-width:660px;margin:1.3rem auto 0;font-weight:400;}
+  .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);font-size:0.66rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);animation:bob 2.2s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translate(-50%,0);opacity:.55;}50%{transform:translate(-50%,7px);opacity:1;}}
+
+  .brandmark{position:fixed;top:1.3rem;left:50%;transform:translateX(-50%);font-size:0.9rem;letter-spacing:0.01em;color:var(--navy);z-index:50;background:rgba(255,255,255,0.85);backdrop-filter:blur(8px);padding:0.45rem 1.2rem;border-radius:100px;box-shadow:0 6px 20px -10px rgba(1,51,86,0.25);font-weight:700;}
+  .brandmark .x{color:var(--pink);margin:0 0.4rem;}
+  .dots{position:fixed;right:1.5rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:0.7rem;z-index:50;}
+  .dots a{width:9px;height:9px;border-radius:50%;background:rgba(1,51,86,0.22);transition:all .25s;}
+  .dots a:hover{background:var(--navy);}
+
+  .navy{background:var(--navy);color:var(--white);}
+  .navy .eyebrow{color:var(--gold);}
+  .navy h1,.navy h2{color:var(--white);}
+  .navy .lead{color:rgba(255,255,255,0.78);}
+  .navy .scroll-hint{color:rgba(255,255,255,0.55);}
+  .accent{color:var(--gold);}
+  .pink{color:var(--pink);}
+
+  .pills{display:flex;flex-wrap:wrap;justify-content:center;gap:0.6rem;margin-top:2.2rem;}
+  .pills span{font-size:0.85rem;color:rgba(255,255,255,0.92);font-weight:500;border:1px solid rgba(255,255,255,0.28);border-radius:100px;padding:0.5rem 1.1rem;}
+
+  /* founder note */
+  .note{background:var(--white);border-radius:28px;box-shadow:var(--shadow);padding:2.8rem 2.6rem;text-align:left;max-width:720px;margin:0 auto;}
+  .note p{font-size:1.08rem;color:var(--ink);font-weight:400;margin-bottom:1.1rem;line-height:1.65;}
+  .note p:last-child{margin-bottom:0;}
+  .note .sig{font-family:'Playfair Display',serif;font-style:italic;font-size:1.25rem;color:var(--navy);margin-top:1.6rem;}
+  .note .sigsub{font-size:0.82rem;color:var(--muted);letter-spacing:0.02em;margin-top:0.2rem;font-weight:600;text-transform:uppercase;}
+
+  /* value cards */
+  .grid4{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:2.4rem;text-align:left;}
+  .vc{background:var(--white);border-radius:22px;box-shadow:var(--shadow);padding:1.7rem 1.6rem;}
+  .vc .ic{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:1rem;}
+  .vc.a .ic{background:rgba(255,133,162,0.18);}
+  .vc.b .ic{background:rgba(0,113,227,0.12);}
+  .vc.c .ic{background:rgba(212,175,55,0.20);}
+  .vc.d .ic{background:rgba(195,165,236,0.22);}
+  .vc h3{font-size:1.18rem;font-weight:700;color:var(--ink);line-height:1.15;margin-bottom:0.4rem;}
+  .vc p{font-size:0.98rem;color:var(--muted);font-weight:400;line-height:1.5;}
+
+  /* growth rows */
+  .rows{margin-top:2.4rem;text-align:left;}
+  .row{background:var(--white);border-radius:20px;box-shadow:var(--shadow);padding:1.5rem 1.7rem;display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:1rem;}
+  .row .num{font-family:'Playfair Display',serif;font-weight:800;font-size:1.7rem;color:var(--pink);flex:none;line-height:1;width:2.2rem;}
+  .row h3{font-size:1.16rem;font-weight:700;color:var(--ink);margin-bottom:0.3rem;}
+  .row p{font-size:0.99rem;color:var(--muted);line-height:1.5;font-weight:400;}
+
+  @media(max-width:760px){.dots{display:none;}section{padding:5rem 1.2rem;}.grid4{grid-template-columns:1fr;}.note{padding:2rem 1.5rem;}.row{flex-direction:row;}}
+</style>
+</head>
+<body>
+
+<div class="brandmark">Salud Texas Clinic <span class="x">×</span> Intellabooks</div>
+<nav class="dots">
+  <a href="#hero"></a><a href="#about"></a><a href="#what"></a><a href="#grow"></a><a href="#founder"></a>
+</nav>
+
+<!-- 1. HERO -->
+<section id="hero">
+  <div class="inner">
+    <div class="eyebrow">A note for Melida &amp; Flor</div>
+    <h1>Quality compassionate care,<br><span class="pink">now always on.</span></h1>
+    <p class="lead">You built Salud Texas Clinic to care for your community in the language they trust. We'd love to help that care reach every patient — even after the doors close.</p>
+  </div>
+  <div class="scroll-hint">scroll ↓</div>
+</section>
+
+<!-- 2. ABOUT INTELLABOOKS -->
+<section id="about">
+  <div class="inner">
+    <div class="eyebrow">About Intellabooks</div>
+    <h2>Big-business support,<br>built for people.</h2>
+    <p class="lead">We give growing businesses the kind of always-on support that used to cost enterprises a fortune — at a price that makes sense for someone still building. Warm, intelligent, and on your side around the clock.</p>
+    <div class="pills" style="margin-top:2.4rem;">
+      <span style="color:var(--navy);border-color:rgba(1,51,86,0.22);">Built for growing businesses</span>
+      <span style="color:var(--navy);border-color:rgba(1,51,86,0.22);">Always on, always warm</span>
+      <span style="color:var(--navy);border-color:rgba(1,51,86,0.22);">People at the center</span>
+    </div>
+  </div>
+  <div class="scroll-hint">scroll ↓</div>
+</section>
+
+<!-- 3. WHAT INTELLABOOKS IS -->
+<section id="what" class="navy">
+  <div class="inner">
+    <div class="eyebrow">The simplest way to say it</div>
+    <h2>An always-on teammate for your clinic.</h2>
+    <p class="lead">Answering every call, booking every patient, and following up automatically — 24/7, in English and Spanish — so you never lose a patient to a missed call or a forgotten follow-up.</p>
+    <div class="grid4">
+      <div class="vc d"><div class="ic">🌕</div><h3>Works the hours you can't</h3><p>Every call answered — day, night, weekend, lunch rush — in English and Spanish. Always-on coverage, so no patient ever reaches a voicemail.</p></div>
+      <div class="vc a"><div class="ic">💛</div><h3>Follows up like family</h3><p>Checks in on how patients are feeling, and reminds them about membership visits, shot days, laser packages, and hormone refills — so they always come back.</p></div>
+      <div class="vc c"><div class="ic">⭐</div><h3>Grows your reputation</h3><p>Invites your happiest patients to leave a review and refer a friend — turning great care into the 5-star word of mouth that brings new patients to your door.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. WHERE WE HELP YOU GROW -->
+<section id="grow">
+  <div class="inner">
+    <div class="eyebrow">Where we'd love to help Salud grow</div>
+    <h2>A few of the moves we see.</h2>
+    <p class="lead">High level for now — we've built the full plan for Salud, and we'll walk it through together on our call.</p>
+    <div class="rows">
+      <div class="row"><div class="num">1</div><div><h3>Wake up the patients you've already met</h3><p>Hundreds of past patients are sitting quietly in your system. A warm, bilingual check-in brings them back — the fastest revenue there is, with no new ad spend.</p></div></div>
+      <div class="row"><div class="num">2</div><div><h3>Make every week a reason to come in</h3><p>Grow your membership and launch a branded weekly shot-and-vitamin day — a standing wellness ritual that builds a habit, a crowd, and steady revenue.</p></div></div>
+      <div class="row"><div class="num">3</div><div><h3>Grow through community &amp; trusted partners</h3><p>Bilingual wellness nights at local churches and businesses — plus referral relationships with gyms, OB/GYNs, dietitians, and other pros who send patients your way.</p></div></div>
+      <div class="row"><div class="num">4</div><div><h3>Show up everywhere they're looking</h3><p>Bilingual social content and real patient stories that turn followers into booked appointments — so new patients find you before they find anyone else.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. FOUNDER NOTE -->
+<section id="founder">
+  <div class="inner">
+    <div class="eyebrow">From our founder</div>
+    <div class="note">
+      <p>Hi Melida and Flor,</p>
+      <p>I'm Alicia Martin, the founder of Intellabooks. I started this company for one reason: to give growing businesses the kind of intelligent support that used to cost tens of thousands a month — at a price that actually makes sense for people still building.</p>
+      <p>What you've built is rare: a clinic where families feel understood, in their own language, by providers who genuinely walk the talk. We'd be honored to help more of those families find you — and to help you grow toward the next chapter you're dreaming about.</p>
+      <p>We've built a plan made just for Salud, and we'd love to walk you through it whenever you're ready. Until then — thank you for the care you pour into your community every day.</p>
+      <p class="sig">Alicia Martin</p>
+      <p class="sigsub">Founder &amp; President · Intellabooks</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
